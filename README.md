@@ -1,4 +1,4 @@
-One page profile build using following technologies:
+One page profile https://kapilpandey.netlify.app/ build using following technologies:
 
   1)React for building user interface.
   
@@ -8,4 +8,4 @@ One page profile build using following technologies:
   
   4)Font Awesome: a font and icon toolkit
   
-  5)Netlify to deploy website
+  5)Netlify to deploy website :https://kapilpandey.netlify.app/
