@@ -4,16 +4,16 @@ import { Paper } from '@material-ui/core'
 export default function Achievements(props) {
   function Item(props) {
     return (
-      <div id={"achievements"}>
         <Paper>
           <p style={{
             position: 'absolute',
             top: '15px',
             left: "10px",
             width: '100%',
-            background: `linear-gradient(to left, green, yellow, orange, red)`,
+            /* background: `linear-gradient(to left, blue, red)`,
             WebkitBackgroundClip: "text",
-            color: "transparent",
+            color: "transparent", */
+            color:'#00ffec',
             fontSize: '20px',
             fontWeight:'bold',
             lineHeight: '60px'
@@ -21,10 +21,10 @@ export default function Achievements(props) {
           }}>{props.item.description}</p>
           <img src={props.item.file.url} alt="image" style={{ width: "96vw", height: "70vh" }} />
         </Paper>
-      </div >
     )
   }
   return (
+    <div id="achievements">
     <Carousel interval={10000} >
       {
         props.data[0].fields.achievementImages.map(item => {
@@ -32,6 +32,7 @@ export default function Achievements(props) {
         })
       }
     </Carousel>
+      </div >
   )
 }
 

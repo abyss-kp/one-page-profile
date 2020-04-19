@@ -33,7 +33,7 @@ export default function SimpleTable(props) {
     })
   }
   return (
-    <div id={"education"}>
+    <div id="education">
       <h2>Education</h2>
       <TableContainer component={Paper}>
         <Table className={classes.table} aria-label="simple table">
