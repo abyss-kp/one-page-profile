@@ -3,23 +3,37 @@ import Carousel from 'react-material-ui-carousel'
 import { Paper } from '@material-ui/core'
 export default function Achievements(props) {
   function Item(props) {
+    let styleObj={
+      mobile:{
+        width:"95vw",
+        height:'40vh',
+      },
+      pc:{
+        width:"80vw",
+        height:'70vh',
+      }
+    }
     return (
-        <Paper>
-          <p style={{
+        <Paper style={{margin:'0 auto',width:'fit-content'}}>
+         {window.screen.width>400 && <p style={{
             position: 'absolute',
-            top: '15px',
-            left: "10px",
-            width: '100%',
+            bottom: '85px',
+            // top: '6px',
+            // left: "3px",
+            // width: '100%',
+            margin:'0 -54px',
             /* background: `linear-gradient(to left, blue, red)`,
             WebkitBackgroundClip: "text",
             color: "transparent", */
-            color:'#00ffec',
+            color:'#00ff7f',
             fontSize: '20px',
             fontWeight:'bold',
-            lineHeight: '60px'
+            // lineHeight: '80px',
+            writingMode: 'tb-rl',
+            transform: 'rotate(180deg)'
 
-          }}>{props.item.description}</p>
-          <img src={props.item.file.url} alt="image" style={{ width: "96vw", height: "70vh" }} />
+          }}>{props.item.description}</p>}
+          <img src={props.item.file.url} alt="image" style={window.screen.width>400?styleObj.pc:styleObj.mobile} />
         </Paper>
     )
   }

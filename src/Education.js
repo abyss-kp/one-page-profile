@@ -34,7 +34,7 @@ export default function SimpleTable(props) {
   }
   return (
     <div id="education">
-      <h2>Education</h2>
+      <h2 style={{textAlignLast:'center'}}>Education</h2>
       <TableContainer component={Paper}>
         <Table className={classes.table} aria-label="simple table">
           <TableHead>
@@ -57,7 +57,7 @@ export default function SimpleTable(props) {
           </TableBody>
         </Table>
       </TableContainer>
-      <h3>ACADEMIC DISTINCTIONS AND CO-CURRICULAR ACHIEVEMENTS</h3>
+      <h3 style={{textAlignLast:'center'}}>ACADEMIC DISTINCTIONS</h3>
       <ul>
         {dist}
       </ul>

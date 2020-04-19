@@ -17,7 +17,8 @@ import Grid from '@material-ui/core/Grid';
 const useStyles = makeStyles((theme) => ({
   root: {
     maxWidth: 345,
-    justifyContent:"space-around"
+    justifyContent:"space-around",
+    margin:'0 auto'
   },
   media: {
     height: 0,
@@ -48,7 +49,7 @@ export default function Projects(props) {
   let projects = props.data[0].fields.projects
   return (
     <div id="projects">
-      <h2>Projects</h2>
+      <h2 style={{textAlignLast:'center'}}>Projects</h2>
       <Grid container spacing={3}>
           {Object.keys(projects).map(project =>
             <> <Grid item xs={12} sm={6} md={4}>

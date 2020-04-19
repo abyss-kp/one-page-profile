@@ -21,7 +21,7 @@ export default class Profile extends Component {
   }
   render() {
     return (
-      <div  style={{margin:"10px 20px"}}>
+      <div  style={{margin:"10px 0px"}}>
         {this.state.data.length ? <><ImageCard data={this.state.data} />
           <Summary data={this.state.data} />
           <Education data={this.state.data} />
