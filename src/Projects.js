@@ -46,7 +46,6 @@ export default function Projects(props) {
     setExpanded(!expanded);
   };
   let projects = props.data[0].fields.projects
-  console.log(props.data[0].fields.projectImg)
   return (
     <div id="projects">
       <h2>Projects</h2>

@@ -4,6 +4,7 @@ import ImageCard from './ImageCard'
 import Summary from './Summary'
 import Education from './Education'
 import Projects from './Projects'
+import Achievements from './Achievements'
 
 export default class Profile extends Component {
   state = {
@@ -25,6 +26,7 @@ export default class Profile extends Component {
           <Summary data={this.state.data} />
           <Education data={this.state.data} />
           <Projects data={this.state.data} />
+          <Achievements data={this.state.data} />
           </> : null}
       </div>
     )
