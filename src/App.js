@@ -7,13 +7,15 @@ import Projects from './pages/Projects'
 import Photos from './pages/Photos'
 import { css } from "@emotion/core";
 import HashLoader from "react-spinners/HashLoader";
-
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
 import { Route, Switch } from 'react-router-dom';
 const override = css`
   display: block;
   margin: 40vh auto;
 `;
 function App() {
+  let cache = localStorage.getItem("kapilProfile")
   const [data, setData] = useState([])
   const [loader, setLoader] = useState(true)
   useEffect(() => {
@@ -22,9 +24,14 @@ function App() {
     })
       .then((response) => {
         setData(response.items)
-        setTimeout(() => setLoader(false), 3000)
+        localStorage.setItem("kapilProfile", JSON.stringify(response.items))
+        setTimeout(() => setLoader(false), 1000)
       })
-      .catch(console.error)
+      .catch((err) => {
+        console.log(err)
+        setData(JSON.parse(cache))
+        setLoader(false)
+      })
   }, [])
   return (
     <div className="App">
