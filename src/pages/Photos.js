@@ -1,57 +1,79 @@
-import React from 'react'
-import Coverflow from 'react-coverflow';
-import { StyleRoot } from 'radium';
-export default function Photos(props) {
-  const fn = function () {
-    /* do your action */
-    console.log("*****")
+import React from "react";
+import Slider from "react-slick";
+import { withStyles } from '@material-ui/core/styles';
+const styles = theme => ({
+  slider: {
+    '& .slick-arrow': {
+      zIndex: '1',
+      paddingLeft: '50px',
+      paddingRight: '70px',
+      '&::before': {
+        color: 'black',
+      }
+    },
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center'
+  },
+  image: {
+    maxHeight: '80vh',
+    maxWidth: '100vw',
+    objectFit: 'contain',
+    margin: 'auto'
   }
-  const images = props.data[0].fields.achievementImages
-  console.log(props.data[0].fields.achievementImages)
-  return (
-    <div style={{ margin: "110px 8px 0px 8px" }}>
-      <StyleRoot>
-        <Coverflow width="960" height="500"
-          displayQuantityOfSide={2}
-          navigation ={true}
-          enableScroll={true}
-          infiniteScroll={true}
-          clickable={true}
-          enableHeading
-          active={5}
-          currentFigureScale={1.5}
-          otherFigureScale={0.8}
-          media={{
-            '@media (max-width: 900px)': {
-              width: '600px',
-              height: '300px'
-            },
-            '@media (min-width: 900px)': {
-              width: '960px',
-              height: '600px'
-            }
-          }}
-        >
-          {/* <div
-            onClick={() => fn()}
-            onKeyDown={() => fn()}
-            role="menuitem"
-            tabIndex="0"
-          >
-            <img
-            src='image/path'
-            alt='title or description'
-            style={{
-              display: 'block',
-              width: '100%',
-            }}
-          />
-          </div> */}
+
+});
+class Photos extends React.Component {
+  render() {
+    var settings = {
+      dots: true,
+      infinite: true,
+      fade: true,
+      speed: 500,
+      lazyLoad: 'progressive',
+      autoplay: true,
+      autoplaySpeed: 3000,
+      slidesToShow: 3,
+      slidesToScroll: 1,
+      responsive: [
+        {
+          breakpoint: 1024,
+          settings: {
+            slidesToShow: 3,
+            slidesToScroll: 3,
+            infinite: true,
+            dots: true
+          }
+        },
+        {
+          breakpoint: 700,
+          settings: {
+            slidesToShow: 2,
+            slidesToScroll: 2,
+            initialSlide: 2
+          }
+        },
+        {
+          breakpoint: 480,
+          settings: {
+            slidesToShow: 1,
+            slidesToScroll: 1
+          }
+        }
+      ]
+    };
+    const images = this.props.data[0].fields.achievementImages
+    return (
+      <div style={{ margin: "110px 8px 0px 0px" }}>
+        <Slider {...settings}
+          className={this.props.classes.slider}>
           {images.map(img =>
-            <img src={img.fields.file.url} alt={img.fields.description} data-action={img.fields.file.url} />
+            <img src={img.fields.file.url} alt={img.fields.description} data-action={img.fields.file.url}
+              className={this.props.classes.image} />
           )}
-        </Coverflow>
-      </StyleRoot>
-    </div>
-  )
+        </Slider>
+      </div>
+    );
+  }
 }
+export default withStyles(styles)(Photos) //slick-arrow slick-prev

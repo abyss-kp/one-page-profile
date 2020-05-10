@@ -57,7 +57,7 @@ export default function Summary(props) {
   return (
     <div id="Summary">
       <Card className={classes.card} style={{ backgroundImage: `url(${props.data[0].fields.images[4].fields.file.url})` }}>
-        <CardActionArea>
+        <CardActionArea style={{cursor:'default'}}>
           <CardMedia
             className={classes.media}
             image={props.data[0] ? props.data[0].fields.images[0].fields.file.url : ""}
