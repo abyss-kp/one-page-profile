@@ -59,7 +59,6 @@ class Photos extends React.Component {
       ]
     };
     const images = this.props.data[0].fields.achievementImages
-    console.log(images)
     return (
       <div style={{ margin: "110px 8px 0px 0px" }}>
         <Slider {...settings}
