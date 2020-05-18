@@ -31,7 +31,8 @@ const AppBarCollapse = props => {
   const menuItems = ['Summary', 'Projects', 'Photos'].filter(itm => `/${itm}`.toLowerCase() !== pathname.toLowerCase())
   let menuClicked = (e) => {
     toggleMenu(true)
-    history.push(e.target.innerText)
+    let path=e.target.innerText
+    history.push(path[0].toUpperCase()+path.slice(1).toLowerCase())
   }
   return (
     <div className={props.classes.root}>

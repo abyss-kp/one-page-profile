@@ -28,7 +28,7 @@ class ButtonAppBarCollapse extends React.Component {
     this.handleMenu = this.handleMenu.bind(this);
   }
   componentDidUpdate(prevProps) {
-    if (prevProps.menu != this.props.menu)
+    if (prevProps.menu !== this.props.menu)
     this.handleClose()
   }
   handleMenu = event => {
