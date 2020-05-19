@@ -29,8 +29,8 @@ const useStyles = makeStyles(theme => ({
       height: 200,
       width: 200,
     },
-    height: 350,
-    width: 350,
+    height: 335,
+    width: 335,
     borderRadius: '50%',
     margin: '0 auto'
   },
@@ -45,10 +45,10 @@ const useStyles = makeStyles(theme => ({
   summary: {
     color: "#00ff7F",
     [theme.breakpoints.down("xs")]: {
-      fontSize: '17px',
+      fontSize: '15px',
     },
     textAlign: 'justify',
-    fontSize: '20px',
+    fontSize: '23px',
     margin: '10px',
     fontFamily: "'VT323', 'monospace', 'sans-serif'"
   }
