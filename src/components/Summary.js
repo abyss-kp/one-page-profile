@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
 import CardActionArea from '@material-ui/core/CardActionArea';
@@ -48,16 +48,59 @@ const useStyles = makeStyles(theme => ({
       fontSize: '17px',
     },
     textAlign: 'justify',
-    fontSize: '20px'
+    fontSize: '20px',
+    margin: '10px'
   }
 }));
 
 export default function Summary(props) {
   const classes = useStyles();
+  const makeMyInfo = (data) => {
+    let para = document.getElementById("myInfo")
+    console.log(para)
+    if (!para)
+      return null
+    console.log(data)
+    var arr = data.split('.');
+    var ele = arr.map(line =>
+      `<span>*</span><span>${line.split("").join('</span><span>')} `
+    ).join("<span><br></span>")
+    console.log(ele)
+    var newElement = document.createElement('div');
+    newElement.innerHTML = ele;
+    console.log(newElement)
+    newElement.querySelectorAll("span").forEach(tag => {
+      tag.style.display = "none";
+      para.appendChild(tag)
+    })
+    para.querySelectorAll("span").forEach((e, i) => {
+      console.log("1")
+      e.style.cssText = "display: inline;opacity:0;"
+      setTimeout(() => {
+        e.style.opacity = 1
+      }
+        , 100 * i)
+    })
+    return "kapil"
+  }
+  useEffect(() => {
+    var node = document.getElementById("myInfo");
+    console.log(node);
+    makeMyInfo(props.data[0].fields.summary)
+  }, [])
   return (
     <div id="Summary">
-      <Card className={classes.card} style={{ backgroundImage: `url(${props.data[0].fields.images[4].fields.file.url})` }}>
-        <CardActionArea style={{cursor:'default'}}>
+      <div class="bg-image" style={{
+        backgroundImage: `url(${props.data[0].fields.images[4].fields.file.url})`, height: '100vh',
+        position: 'absolute',
+        top: '0',
+        bottom: '0',
+        right: '0',
+        left: '0',
+        filter: 'blur(8px)'
+      }}></div>
+      <Card className={classes.card}>
+        <CardActionArea style={{ cursor: 'default', height: '90vh', zIndex: "100" }}>
           <CardMedia
             className={classes.media}
             image={props.data[0] ? props.data[0].fields.images[0].fields.file.url : ""}
@@ -68,15 +111,14 @@ export default function Summary(props) {
             <FontAwesomeIcon icon={faCode} />
             </Typography>
           </CardContent>
-          <Typography gutterBottom variant="subtitle2" component="p" className={classes.summary}>
-            {props.data[0] && <>
-              <ul>
-                {
-                  props.data[0].fields.summary.split(".").map(itm => <li>{itm}</li>)
-                }
-              </ul>
+          <Typography gutterBottom variant="subtitle2" id="myInfo" component="p" className={classes.summary}>
+            {/* {props.data[0] && <>
+              {
+                makeMyInfo(props.data[0].fields.summary)
+                props.data[0].fields.summary.split(".").map(itm =>{itm})
+              }
             </>
-            }
+            } */}
           </Typography>
           <Typography className={classes.link}>
             <Button size="small" color="primary" onClick={() => window.open("https://www.instagram.com/_kapi1/", "_blank")}>
