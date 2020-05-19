@@ -49,7 +49,8 @@ const useStyles = makeStyles(theme => ({
     },
     textAlign: 'justify',
     fontSize: '20px',
-    margin: '10px'
+    margin: '10px',
+    fontFamily: "'VT323', 'monospace', 'sans-serif'"
   }
 }));
 
@@ -57,35 +58,27 @@ export default function Summary(props) {
   const classes = useStyles();
   const makeMyInfo = (data) => {
     let para = document.getElementById("myInfo")
-    console.log(para)
     if (!para)
       return null
-    console.log(data)
     var arr = data.split('.');
     var ele = arr.map(line =>
       `<span>*</span><span>${line.split("").join('</span><span>')} `
     ).join("<span><br></span>")
-    console.log(ele)
     var newElement = document.createElement('div');
     newElement.innerHTML = ele;
-    console.log(newElement)
     newElement.querySelectorAll("span").forEach(tag => {
       tag.style.display = "none";
       para.appendChild(tag)
     })
     para.querySelectorAll("span").forEach((e, i) => {
-      console.log("1")
       e.style.cssText = "display: inline;opacity:0;"
       setTimeout(() => {
         e.style.opacity = 1
       }
         , 100 * i)
     })
-    return "kapil"
   }
   useEffect(() => {
-    var node = document.getElementById("myInfo");
-    console.log(node);
     makeMyInfo(props.data[0].fields.summary)
   }, [])
   return (
